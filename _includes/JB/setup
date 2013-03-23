@@ -1,3 +1,4 @@
+{% capture root %}{% if page.root %}{{ page.root }}{% else %}{{ post.root }}{% endif %}{%endcapture%}
 {% capture jbcache %}
   <!--
   - Dynamically set liquid variables for working with URLs/paths
@@ -9,8 +10,8 @@
       {% assign BASE_PATH = site.JB.BASE_PATH %}
       {% assign HOME_PATH = site.JB.BASE_PATH %}
     {% else %}
-      {% assign BASE_PATH = nil %}
-      {% assign HOME_PATH = "/" %}
+      {% assign BASE_PATH = root %}
+      {% capture HOME_PATH %}{{ root }}/index.html{% endcapture %}
     {% endif %}
 
     {% if site.JB.ASSET_PATH %}
